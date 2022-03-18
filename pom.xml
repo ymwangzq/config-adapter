@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.ymwangzq</groupId>
     <artifactId>config-adapter</artifactId>
     <version>1.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+
+    <name>config-adapter</name>
+    <description>This is a powerful dynamic config util, almost satisfied any requirement.</description>
+    <url>https://github.com/ymwangzq/config-adapter</url>
 
     <licenses>
         <license>
@@ -18,8 +23,8 @@
         <connection>scm:git:git@github.com:ymwangzq/config-adapter.git</connection>
         <developerConnection>scm:git:git@github.com:ymwangzq/config-adapter.git</developerConnection>
         <url>https://github.com/ymwangzq/config-adapter</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <developers>
         <developer>
@@ -164,6 +169,7 @@
                     <serverId>ossrh</serverId>
                     <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <stagingProgressTimeoutMinutes>20</stagingProgressTimeoutMinutes>
                 </configuration>
             </plugin>
 

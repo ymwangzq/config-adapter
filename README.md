@@ -72,7 +72,16 @@ public class ConfigAdapterTest {
                 @Override
                 public Connection map(@Nullable String s) {
                     Objects.requireNonNull(s);
-                    return new Connection(s);
+                    Connection c = new Connection(s);
+                    try {
+                        c.connect();
+                    } catch (Throwable t) {
+                        // Connection will not be updated.
+                        // You can use `com.github.ymwangzq.config.adapter.core.UpdateWithRetryMapper` for retry,
+                        // Another useful mapper is `com.github.ymwangzq.config.adapter.core.MapWithLastValueMapper`
+                        throw t;
+                    }
+                    return c;
                 }
 
                 @Override
