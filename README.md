@@ -11,7 +11,7 @@ dependency
 <dependency>
     <groupId>io.github.ymwangzq</groupId>
     <artifactId>config-adapter-core</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.2</version>
 </dependency>
 ```
 
