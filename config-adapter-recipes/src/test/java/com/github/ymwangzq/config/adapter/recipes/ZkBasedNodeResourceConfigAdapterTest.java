@@ -59,9 +59,11 @@ class ZkBasedNodeResourceConfigAdapterTest {
     private static TestingServer testingServer;
     private static CuratorFramework curatorFramework;
 
-    private final ListeningExecutorService zkRefreshExecutor = MoreExecutors.listeningDecorator(newSingleThreadExecutor(new ThreadFactoryBuilder()
-            .setNameFormat("zk-refresh-thread")
-            .build()));
+    private final ListeningExecutorService zkRefreshExecutor =
+            MoreExecutors.listeningDecorator(newSingleThreadExecutor(new ThreadFactoryBuilder()
+                    .setDaemon(true)
+                    .setNameFormat("zk-refresh-thread")
+                    .build()));
 
     @BeforeAll
     static void init() throws Throwable {

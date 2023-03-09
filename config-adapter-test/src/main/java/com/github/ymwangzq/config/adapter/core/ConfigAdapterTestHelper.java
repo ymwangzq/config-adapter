@@ -44,6 +44,7 @@ public class ConfigAdapterTestHelper {
 
     private static final ScheduledExecutorService SCHEDULED_EXECUTOR_SERVICE =
             Executors.newSingleThreadScheduledExecutor(new ThreadFactoryBuilder()
+                    .setDaemon(true)
                     .setNameFormat("ConfigAdapterTestHelper-%d")
                     .build());
 

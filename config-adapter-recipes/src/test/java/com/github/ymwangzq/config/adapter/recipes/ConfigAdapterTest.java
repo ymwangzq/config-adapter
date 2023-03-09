@@ -101,9 +101,11 @@ class ConfigAdapterTest {
     static final AtomicReference<String> configSource = new AtomicReference<>(null);
     static final ConfigAdapter<String> SIMPLE_CONFIG_ADAPTER = SupplierConfigAdapter.createConfigAdapter(configSource::get);
 
-    private final ListeningExecutorService zkRefreshExecutor = MoreExecutors.listeningDecorator(newSingleThreadExecutor(new ThreadFactoryBuilder()
-            .setNameFormat("zk-refresh-thread")
-            .build()));
+    private final ListeningExecutorService zkRefreshExecutor =
+            MoreExecutors.listeningDecorator(newSingleThreadExecutor(new ThreadFactoryBuilder()
+                    .setDaemon(true)
+                    .setNameFormat("zk-refresh-thread")
+                    .build()));
     private final ConfigAdapter<String> zkConfigAdapter =
             ZkBasedNodeResourceConfigAdapter.create(ZkBasedNodeResource.<String>newGenericBuilder()
                             .withCacheFactory(ZK_KEY_PATH, curatorFramework)
@@ -683,7 +685,7 @@ class ConfigAdapterTest {
     @Test
     void testMultiThreadInit() {
         ExecutorService executorService = Executors
-                .newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 4, new ThreadFactoryBuilder().build());
+                .newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 4, new ThreadFactoryBuilder().setDaemon(true).build());
 
         CountDownLatch latch = new CountDownLatch(1);
         AtomicInteger initCounter = new AtomicInteger(0);
@@ -815,7 +817,7 @@ class ConfigAdapterTest {
                         .map(resource -> new RefreshAbleService(Preconditions.checkNotNull(resource)));
 
         ExecutorService executorService = Executors
-                .newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 4, new ThreadFactoryBuilder().build());
+                .newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 4, new ThreadFactoryBuilder().setDaemon(true).build());
 
         ArrayList<Future<?>> futures = new ArrayList<>();
         Stopwatch stopwatch = Stopwatch.createStarted();
@@ -857,7 +859,7 @@ class ConfigAdapterTest {
     @Test
     void testMultiThreadEventSource() {
         ExecutorService executorService = Executors
-                .newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 4, new ThreadFactoryBuilder().build());
+                .newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 4, new ThreadFactoryBuilder().setDaemon(true).build());
 
         final Map<String, CloseableResourceWithData> createdMap = Maps.newConcurrentMap();
         final long delayCleanUpMs = 1000L;

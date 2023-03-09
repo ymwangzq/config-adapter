@@ -60,6 +60,7 @@ public abstract class RootConfigAdapterHelper {
     protected static SingleThreadConfigDispatchExecutor createEventDispatchExecutor(@Nonnull String threadNameFormat) {
         Preconditions.checkArgument(StringUtils.isNotBlank(threadNameFormat));
         return new SingleThreadConfigDispatchExecutorImpl(new ThreadFactoryBuilder()
+                .setDaemon(true)
                 .setNameFormat(threadNameFormat)
                 .build(), 1, TimeUnit.SECONDS);
     }

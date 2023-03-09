@@ -32,7 +32,7 @@ public class SupplierConfigAdapter extends RootConfigAdapterHelper {
     private static final Logger logger = LoggerFactory.getLogger(SupplierConfigAdapter.class);
 
     private static final ScheduledExecutorService SCHEDULER = Executors.newSingleThreadScheduledExecutor(
-            new ThreadFactoryBuilder().setNameFormat("SupplierConfigAdapter-change-checker").build());
+            new ThreadFactoryBuilder().setDaemon(true).setNameFormat("SupplierConfigAdapter-change-checker").build());
 
     private static final Set<SupplierChangeHelper<?>> SUPPLIER_CHANGE_HELPERS = Sets.newConcurrentHashSet();
 

@@ -41,7 +41,7 @@ public class GcUtil {
 
     private static final ScheduledExecutorService SCHEDULER =
             Executors.newSingleThreadScheduledExecutor(
-                    new ThreadFactoryBuilder().setNameFormat("config-adapter-gc-scheduler-%d").build());
+                    new ThreadFactoryBuilder().setDaemon(true).setNameFormat("config-adapter-gc-scheduler-%d").build());
 
     private static final Supplier<?> INIT = Suppliers
             .memoize(() -> SCHEDULER.scheduleWithFixedDelay(() -> {

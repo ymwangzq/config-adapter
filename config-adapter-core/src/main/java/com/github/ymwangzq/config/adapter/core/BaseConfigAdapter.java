@@ -51,7 +51,7 @@ public final class BaseConfigAdapter<T, C> implements ConfigAdapter<T> {
     private static final Logger logger = LoggerFactory.getLogger(BaseConfigAdapter.class);
 
     private static final ExecutorService FAIL_EVENT_DISPATCHER = Executors.newSingleThreadExecutor(
-            new ThreadFactoryBuilder().setNameFormat("config-adapter-fail-event-dispatcher").build());
+            new ThreadFactoryBuilder().setDaemon(true).setNameFormat("config-adapter-fail-event-dispatcher").build());
 
     enum Stat {
         CREATED,

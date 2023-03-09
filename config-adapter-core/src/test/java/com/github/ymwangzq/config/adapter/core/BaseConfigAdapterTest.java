@@ -23,7 +23,7 @@ class BaseConfigAdapterTest {
     void testDeadLock1() {
 
         ExecutorService executorService = Executors
-                .newCachedThreadPool(new ThreadFactoryBuilder().setNameFormat("deadLockExecutor-%d").build());
+                .newCachedThreadPool(new ThreadFactoryBuilder().setDaemon(true).setNameFormat("deadLockExecutor-%d").build());
         try {
             for (int i = 0; i < 1000; i++) {
                 AtomicReference<String> data1 = new AtomicReference<>("d1-v1");

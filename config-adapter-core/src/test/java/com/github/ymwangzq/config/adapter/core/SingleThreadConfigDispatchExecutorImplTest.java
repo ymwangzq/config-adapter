@@ -30,6 +30,7 @@ class SingleThreadConfigDispatchExecutorImplTest {
         AtomicInteger counter = new AtomicInteger(0);
         SingleThreadConfigDispatchExecutorImpl configDispatchExecutor =
                 new SingleThreadConfigDispatchExecutorImpl(new ThreadFactoryBuilder()
+                        .setDaemon(true)
                         .setNameFormat("ConfigDispatchExecutorImplTest-testExecute-%d")
                         // 验证下每次都创建新线程是否有问题
                         .build(), 0, TimeUnit.NANOSECONDS);
@@ -96,6 +97,7 @@ class SingleThreadConfigDispatchExecutorImplTest {
 
         SingleThreadConfigDispatchExecutorImpl configDispatchExecutor =
                 new SingleThreadConfigDispatchExecutorImpl(new ThreadFactoryBuilder()
+                        .setDaemon(true)
                         .setNameFormat("ConfigDispatchExecutorImplTest-testExecute-%d")
                         // 验证下每次都创建新线程是否有问题
                         .build(), 0, TimeUnit.NANOSECONDS);

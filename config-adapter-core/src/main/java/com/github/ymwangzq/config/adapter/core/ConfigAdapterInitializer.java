@@ -28,7 +28,7 @@ class ConfigAdapterInitializer {
     private static final Logger logger = LoggerFactory.getLogger(ConfigAdapterInitializer.class);
 
     private static final ScheduledExecutorService SCHEDULER = Executors.newSingleThreadScheduledExecutor(
-            new ThreadFactoryBuilder().setNameFormat("ConfigAdapterInitializer-%d").build());
+            new ThreadFactoryBuilder().setDaemon(true).setNameFormat("ConfigAdapterInitializer-%d").build());
 
     private static final Set<BaseConfigAdapter<?, ?>> CONFIG_ADAPTER_SET = Sets.newConcurrentHashSet();
 
