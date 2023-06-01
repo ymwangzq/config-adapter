@@ -2,6 +2,8 @@
 
 This is a powerful dynamic config util, almost satisfied any requirement.
 
+[介绍文档](DOC.md)
+
 ## Usage
 
 dependency
