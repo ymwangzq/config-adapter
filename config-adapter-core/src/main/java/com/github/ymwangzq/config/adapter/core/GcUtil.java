@@ -20,6 +20,7 @@ import com.google.common.base.Suppliers;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
+import com.google.common.collect.Sets;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 /**
@@ -34,7 +35,7 @@ public class GcUtil {
     private static final Logger logger = LoggerFactory.getLogger(GcUtil.class);
 
     private static final Multimap<PhantomReference<?>, Runnable> FINALIZER_MAP =
-            Multimaps.newMultimap(Maps.newConcurrentMap(), ArrayList::new);
+            Multimaps.newMultimap(Maps.newConcurrentMap(), Sets::newConcurrentHashSet);
     private static final ReferenceQueue<Object> REFERENCE_QUEUE = new ReferenceQueue<>();
 
     private static final List<Runnable> FINALIZE_LISTENER_FOR_UT = Collections.synchronizedList(new ArrayList<>());
