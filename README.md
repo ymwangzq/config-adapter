@@ -85,7 +85,7 @@ public void onRequest() {
 <dependency>
     <groupId>io.github.ymwangzq</groupId>
     <artifactId>config-adapter-core</artifactId>
-    <version>1.1.3</version>
+    <version>1.1.4</version>
 </dependency>
 ```
 ## ConfigAdapter 能做什么
